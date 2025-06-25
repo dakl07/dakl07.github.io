@@ -1,0 +1,56 @@
+---
+// Hero section component
+import { Image } from "astro:assets";
+import logo from "../assets/dakl_logo2.png";
+---
+
+<section
+    class="min-h-screen flex items-center justify-center px-4 py-12 bg-linear-to-t from-sky-600 to-slate-800 dark:to-sky-800 dark:from-slate-950"
+>
+    <div class="text-center max-w-4xl mx-auto">
+        <!-- Logo/Avatar -->
+
+        <Image src={logo} alt="dakl logo" height={700} class="mb-8" />
+
+        <!-- Name and Title -->
+        <h1
+            class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-t from-cyan-700 to-indigo-600 dark:to-cyan-400 dark:from-indigo-700 bg-clip-text text-transparent"
+        >
+            Dakl
+        </h1>
+
+        <p
+            class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
+        >
+            HTLer
+        </p>
+
+        <p
+            class="text-lg text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto"
+        >
+            Ich mach gerne Projekte
+        </p>
+
+        <!-- CTA Button -->
+        <div class="flex justify-center">
+            <a
+                href="#projects"
+                class="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+                Meine Projekte
+                <svg
+                    class="ml-2 w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
