@@ -5,17 +5,23 @@ export interface Props {
     image: string;
     githubUrl: string | null;
     technologies?: string[];
+    ongoing?: boolean;
 }
 
-const { title, description, image, githubUrl, technologies = [] } = Astro.props;
+const { title, description, image, githubUrl, technologies = [], ongoing = false } = Astro.props;
 ---
 
 <a
     href={githubUrl ? githubUrl : null}
     target={githubUrl ? "_blank" : ""}
     rel="noopener noreferrer"
-    class="group block bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-200 dark:border-gray-700"
+    class={`group block rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border ${ongoing ? 'border-green-200 dark:border-green-700 bg-green-50 dark:bg-green-900/10' : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700'}`}
 >
+    {ongoing && (
+        <div class="px-4 py-2 bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200 font-medium">
+            Laufend
+        </div>
+    )}
     <!-- Project Image -->
     <div class="aspect-video overflow-hidden bg-gray-100 dark:bg-gray-700">
         <img

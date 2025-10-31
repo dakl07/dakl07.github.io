@@ -41,6 +41,16 @@ const projects = [
         githubUrl: "https://github.com/dakl07/dakl07.github.io",
         technologies: ["Astro", "TailwindCSS", "HTML", "JS"],
     },
+    // Platzhalter laufende Projekte
+    {
+        title: "Galactic Survivors",
+        description: "Ein Raumschiff videospiel das ich derzeit entwickle mit einem innovativen Block Upgrade System.",
+        image: "../images/GSTitle.png",
+        githubUrl: "",
+        technologies: ["Godot","GDScript","3D Modeling"],
+        ongoing: true,
+    },
+
 ];
 ---
 
@@ -60,18 +70,24 @@ const projects = [
             </p>
         </div>
 
-        <!-- Projects Grid -->
+    <!-- (Laufende Projekte werden per `ongoing: true` im projects-Array markiert) -->
+
+        <!-- Projects Grid (laufende Projekte haben `ongoing: true` und erscheinen zuerst) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {
-                projects.map((project) => (
-                    <ProjectCard
-                        title={project.title}
-                        description={project.description}
-                        image={project.image}
-                        githubUrl={project.githubUrl}
-                        technologies={project.technologies}
-                    />
-                ))
+                projects
+                    .slice()
+                    .sort((a, b) => (b.ongoing ? 1 : 0) - (a.ongoing ? 1 : 0))
+                    .map((project) => (
+                        <ProjectCard
+                            title={project.title}
+                            description={project.description}
+                            image={project.image}
+                            githubUrl={project.githubUrl}
+                            technologies={project.technologies}
+                            ongoing={project.ongoing}
+                        />
+                    ))
             }
         </div>
 
